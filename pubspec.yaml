@@ -54,7 +54,22 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/
+    - assets/items/1.png
+    - assets/items/2.png
+    - assets/items/3.png
+    - assets/items/4.png
+    - assets/items/5.png
+    - assets/items/6.png
+    - assets/items/7.png
+    - assets/items/8.png
+    - assets/items/9.png
+    - assets/items/10.png
+    - assets/items/11.png
+    - assets/items/12.png
+    - assets/icons/icon-desserts.png
+    - assets/icons/icon-drinks.png
+    - assets/icons/icon-noodles.png
+    - assets/icons/icon-burger.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.
