@@ -1,0 +1,49 @@
+                  hello world                   
+                      123                       
+                    testing                     
+                      1022                      
+
+Invoice No   : T004400038507000002              
+Date         : 17 Apr 2023                      
+Time         : 10:12:46                         
+Counter      : 103                              
+Cashier      : hugo
+
+------------------------------------------------
+Barcode                Item           Amount(RM)
+------------------------------------------------
+285100650000 Vitagen Natural 125m           1.70
+1.70 x 1      
+285120070000 Vitagen Apple 125ml            1.70
+1.70 x 1      
+285120060000 Vitagen Orange 125ml           1.70
+1.70 x 1      
+285120080000 Vitagen Grape 125ml            1.70
+1.70 x 1      
+300000000002 BBQ Chicken                    2.90
+2.90 x 1      
+300000000003 Pumpkin Custard                2.90
+2.90 x 1      
+------------------------------------------------
+No of Items: 6             Subtotal:       12.60
+                 Service Charge 30%:        3.78
+                           Rounding:        0.02
+                              Total:       16.40
+                               Cash:       30.00
+                             Change:       13.60
+Missed Point Today: 2                           
+
+************** Itemize Nett Price **************
+Barcode                               Nett Price
+285100650000                                1.70
+285120070000                                1.70
+285120060000                                1.70
+285120080000                                1.70
+300000000002                                2.90
+300000000003                                2.90
+************************************************
+        Printed On 17 Apr 2023 10:20:53         
+
+          Thank You! Please come again          
+
+------------------------------------------------

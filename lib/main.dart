@@ -3,9 +3,27 @@ import 'package:armspos/views/login.dart';
 import 'package:armspos/views/home.dart';
 import 'package:armspos/controllers/login_controller.dart';
 import 'package:armspos/models/user_model.dart';
+import 'package:window_manager/window_manager.dart';
 
-void main() => runApp(ArmsApp());
+void main() async{
+   WidgetsFlutterBinding.ensureInitialized();
+  // Must add this line.
+  await windowManager.ensureInitialized();
 
+  WindowOptions windowOptions = WindowOptions(
+    center: true,
+    backgroundColor: Colors.transparent,
+    skipTaskbar: false,
+    titleBarStyle: TitleBarStyle.hidden,
+  );
+  windowManager.waitUntilReadyToShow(windowOptions, () async {
+    await windowManager.setFullScreen(true);
+    await windowManager.show();
+    await windowManager.focus();
+  });
+
+  runApp(ArmsApp());
+} 
 class ArmsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

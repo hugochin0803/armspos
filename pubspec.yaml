@@ -30,6 +30,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  window_manager: ^0.3.4
+  path_provider: ^2.0.15
+  virtual_keyboard_multi_language: ^1.0.3
+  usb_thermal_printer_web: ^0.0.3
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -70,6 +74,7 @@ flutter:
     - assets/icons/icon-drinks.png
     - assets/icons/icon-noodles.png
     - assets/icons/icon-burger.png
+    - assets/data/receipt.txt
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

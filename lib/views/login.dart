@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:armspos/controllers/login_controller.dart';
+import 'package:virtual_keyboard_multi_language/virtual_keyboard_multi_language.dart';
 
 class LoginPage extends StatefulWidget {
   final LoginController controller;
@@ -12,9 +13,11 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  String text="";
+  bool shiftEnabled = false;
 
   TextEditingController _passwordController = TextEditingController();
-
+  bool keyboardOpen=false;
   String? _passwordErrorText;
 
   void _submitForm(BuildContext? context) {
@@ -47,7 +50,8 @@ class _LoginPageState extends State<LoginPage> {
       appBar: AppBar(
         title: Text('ARMS POS'),
       ),
-      body: Center(
+      body:ListView(children:[ 
+      Center(
         child: Container(
           margin: const EdgeInsets.only(top: 150.0),
           width: 500,
@@ -65,7 +69,13 @@ class _LoginPageState extends State<LoginPage> {
                       labelText: 'EmployeeID',
                       errorText: _passwordErrorText,
                     ),
+                    keyboardType: TextInputType.text,
                     obscureText: true,
+                    onTap:() => {
+                      setState(() {
+                         keyboardOpen=true;
+                      })
+                    },
                     validator: _validatePassword,
                     onSaved: (value) {
                       widget.controller.model.password = value!;
@@ -91,6 +101,54 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
       ),
+      Container(
+                    // Keyboard is transparent
+                    color: Colors.grey,
+                    child: VirtualKeyboard(
+                    // Default height is 300
+                    height: 350,
+                    // Default height is will screen width
+                    width: 600,
+                    // Default is black
+                    textColor: Colors.white,
+                    // Default 14
+                    fontSize: 20,
+                    // the layouts supported
+                    // [A-Z, 0-9]
+                    type: VirtualKeyboardType.Alphanumeric,
+                    // Callback for key press event
+                    onKeyPress: _onKeyPress),
+                  ) 
+      
+      ]
+      
+      ),
     );
   }
+
+  _onKeyPress(VirtualKeyboardKey key) {
+    if (key.keyType == VirtualKeyboardKeyType.String) {
+        text = text + (shiftEnabled ? key.capsText.toString() : key.text.toString());
+    } else if (key.keyType == VirtualKeyboardKeyType.Action) {
+        switch (key.action) {
+        case VirtualKeyboardKeyAction.Backspace:
+            if (text.length == 0) return;
+            text = text.substring(0, text.length - 1);
+            break;
+        case VirtualKeyboardKeyAction.Return:
+            text = text + '\n';
+            break;
+        case VirtualKeyboardKeyAction.Space:
+            text = text + key.text.toString();
+            break;
+        case VirtualKeyboardKeyAction.Shift:
+            shiftEnabled = !shiftEnabled;
+            break;
+        default:
+        }
+    }
+    // Update the screen
+    _passwordController.text = text;
+    setState(() {});
+}
 }
