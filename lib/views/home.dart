@@ -17,11 +17,6 @@ class _HomePageState extends State<HomePage> {
    return Scaffold(
   body: Column(
     children: [
-      // _topMenu(
-      //         title: 'ARMS POS',
-      //         subTitle: '20 October 2022',
-      //         action: _search(),
-      // ),
       Expanded(
         flex: 90,
         child: Container(
@@ -46,7 +41,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     ),
                     Expanded(
-                      flex: 10,
+                      flex: 7,
                       child: Container(
                       margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
                       decoration: BoxDecoration(border: Border.all(width: 1)),
@@ -58,12 +53,94 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
             ),
+            Expanded(
+              child:Container(
+              margin: EdgeInsets.only(left:10),  
+              child: 
+              Column(
+                  children: [
+                     _topMenu(
+                      title: 'ARMS POS',
+                      subTitle: '20 October 2022',
+                      action: _search(),
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          flex:6,
+                          child: Column(children:[
+                            Container(
+                              height: 385,
+                              decoration: BoxDecoration(border: Border.all(width: 1)),
+                          ),
+                          Container(
+                              height: 384,
+                              decoration: BoxDecoration(border: Border.all(width: 1)),
+                              child: Row(children: [
+                                Column(
+                                  children: [
+                                    Row(children: [
+                                      _keypad("1"),
+                                      _keypad("2"),
+                                      _keypad("3"),
+                                    ],),
+                                    Row(children: [
+                                      _keypad("1"),
+                                      _keypad("2"),
+                                      _keypad("3"),
+                                    ],),
+                                    Row(children: [
+                                      _keypad("1"),
+                                      _keypad("2"),
+                                      _keypad("3"),
+                                    ],),
+                                    Row(children: [
+                                      _keypad("1"),
+                                      _keypad("2"),
+                                      _keypad("3"),
+                                    ],),
+                                  ],
+                                ),
+                                Column(
+                                  
+                                ),
+                              ]),
+                          ),]),),
+                        Expanded(
+                          child: Container(
+                            height: 769,
+                            decoration: BoxDecoration(color: Colors.blue,border: Border.all(width: 1)),
+                            child:
+                            Column(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                 Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: RotatedBox(quarterTurns: 4, child: Text('Overview')),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: RotatedBox(quarterTurns: 3, child: Text('Profile')),
+                                ),
+                                Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: RotatedBox(quarterTurns: 3, child: Text('Bio')),
+                                ),
+                              ],
+                            )
+                          ),
+                        )
+                      ],
+                    )
+                  ],
+
+              ),),)
           ],
         ),
       ),
       ),
       Expanded(
-        flex: 10,
+        flex: 5,
         child: Row(children: [
         ],)
       )
@@ -72,11 +149,21 @@ class _HomePageState extends State<HomePage> {
 );
 }
 
+  Widget _keypad(text){
+    return Container(
+      margin: EdgeInsets.all(5),
+      width: 100,
+      height: 85,
+      decoration: BoxDecoration(color: Colors.grey,),
+      child: Text(text,textAlign: TextAlign.center,style: TextStyle(color: Colors.black),),
+    );
+  }
+
 
   Widget _topMenu({required String title, required String subTitle, required Widget action}) {
     return Container(
       color: Colors.blue,
-      padding: const EdgeInsets.symmetric(vertical: 24, horizontal: 16),
+      padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 16),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
