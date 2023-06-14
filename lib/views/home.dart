@@ -31,7 +31,7 @@ class _HomePageState extends State<HomePage> {
                       flex:30,
                       child: _receiptSummary()),
                     Expanded(
-                      flex: 90,
+                      flex:70,
                     child:Container(
                       width: double.maxFinite,
                       decoration: BoxDecoration(
@@ -70,45 +70,43 @@ class _HomePageState extends State<HomePage> {
                           flex:6,
                           child: Column(children:[
                             Container(
-                              height: 385,
+                              height: 600,
                               decoration: BoxDecoration(border: Border.all(width: 1)),
                           ),
-                          Container(
-                              height: 384,
-                              decoration: BoxDecoration(border: Border.all(width: 1)),
-                              child: Row(children: [
-                                Column(
-                                  children: [
-                                    Row(children: [
-                                      _keypad("1"),
-                                      _keypad("2"),
-                                      _keypad("3"),
-                                    ],),
-                                    Row(children: [
-                                      _keypad("1"),
-                                      _keypad("2"),
-                                      _keypad("3"),
-                                    ],),
-                                    Row(children: [
-                                      _keypad("1"),
-                                      _keypad("2"),
-                                      _keypad("3"),
-                                    ],),
-                                    Row(children: [
-                                      _keypad("1"),
-                                      _keypad("2"),
-                                      _keypad("3"),
-                                    ],),
-                                  ],
-                                ),
-                                Column(
-                                  
-                                ),
-                              ]),
-                          ),]),),
+                          // Container(
+                          //     height: 384,
+                          //     decoration: BoxDecoration(border: Border.all(width: 1)),
+                          //     child: Row(children: [
+                          //       Column(
+                          //         children: [
+                          //           Row(children: [
+                          //             _keypad("1"),
+                          //             _keypad("2"),
+                          //             _keypad("3"),
+                          //           ],),
+                          //           Row(children: [
+                          //             _keypad("1"),
+                          //             _keypad("2"),
+                          //             _keypad("3"),
+                          //           ],),
+                          //           Row(children: [
+                          //             _keypad("1"),
+                          //             _keypad("2"),
+                          //             _keypad("3"),
+                          //           ],),
+                          //           Row(children: [
+                          //             _keypad("1"),
+                          //             _keypad("2"),
+                          //             _keypad("3"),
+                          //           ],),
+                          //         ],
+                          //       ),
+                          //     ]),
+                          // ),
+                          ]),),
                         Expanded(
                           child: Container(
-                            height: 769,
+                            height: 600,
                             decoration: BoxDecoration(color: Colors.blue,border: Border.all(width: 1)),
                             child:
                             Column(
@@ -140,7 +138,7 @@ class _HomePageState extends State<HomePage> {
       ),
       ),
       Expanded(
-        flex: 5,
+        flex: 2,
         child: Row(children: [
         ],)
       )
