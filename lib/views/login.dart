@@ -5,7 +5,7 @@ import 'package:virtual_keyboard_multi_language/virtual_keyboard_multi_language.
 class LoginPage extends StatefulWidget {
   final LoginController controller;
 
-  LoginPage({required this.controller});
+  const LoginPage({super.key, required this.controller});
 
   @override
   _LoginPageState createState() => _LoginPageState();
@@ -16,7 +16,7 @@ class _LoginPageState extends State<LoginPage> {
   String text="";
   bool shiftEnabled = false;
 
-  TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
   bool keyboardOpen=false;
   String? _passwordErrorText;
 
@@ -48,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('ARMS POS'),
+        title: const Text('ARMS POS'),
       ),
       body:ListView(children:[ 
       Center(
@@ -62,7 +62,7 @@ class _LoginPageState extends State<LoginPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
-                  SizedBox(height: 16.0),
+                  const SizedBox(height: 16.0),
                   TextFormField(
                     controller: _passwordController,
                     decoration: InputDecoration(
@@ -90,10 +90,10 @@ class _LoginPageState extends State<LoginPage> {
                       _submitForm(context);
                     },
                   ),
-                  SizedBox(height: 16.0),
+                  const SizedBox(height: 16.0),
                   ElevatedButton(
                     onPressed: () => _submitForm(context),
-                    child: Text('Log In'),
+                    child: const Text('Log In'),
                   ),
                 ],
               ),
@@ -132,11 +132,11 @@ class _LoginPageState extends State<LoginPage> {
     } else if (key.keyType == VirtualKeyboardKeyType.Action) {
         switch (key.action) {
         case VirtualKeyboardKeyAction.Backspace:
-            if (text.length == 0) return;
+            if (text.isEmpty) return;
             text = text.substring(0, text.length - 1);
             break;
         case VirtualKeyboardKeyAction.Return:
-            text = text + '\n';
+            text = '$text\n';
             break;
         case VirtualKeyboardKeyAction.Space:
             text = text + key.text.toString();

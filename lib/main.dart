@@ -10,7 +10,7 @@ void main() async{
   // Must add this line.
   await windowManager.ensureInitialized();
 
-  WindowOptions windowOptions = WindowOptions(
+  WindowOptions windowOptions = const WindowOptions(
     center: true,
     backgroundColor: Colors.transparent,
     skipTaskbar: false,
@@ -22,9 +22,11 @@ void main() async{
     await windowManager.focus();
   });
 
-  runApp(ArmsApp());
+  runApp(const ArmsApp());
 } 
 class ArmsApp extends StatelessWidget {
+  const ArmsApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -38,7 +40,7 @@ class ArmsApp extends StatelessWidget {
       ),
 
       routes: {
-        '/home': (context) => HomePage(),
+        '/home': (context) => const HomePage(),
       },
       initialRoute: '/',
     );

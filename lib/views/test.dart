@@ -1,7 +1,4 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -190,9 +187,9 @@ class _HomePageState extends State<HomePage> {
                   ),
                   child: Column(
                     children: [
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
+                        children: [
                           Text(
                             'Sub Total',
                             style: TextStyle(
@@ -208,9 +205,9 @@ class _HomePageState extends State<HomePage> {
                         ],
                       ),
                       const SizedBox(height: 20),
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
+                        children: [
                           Text(
                             'Tax',
                             style: TextStyle(
@@ -231,9 +228,9 @@ class _HomePageState extends State<HomePage> {
                         width: double.infinity,
                         color: Colors.white,
                       ),
-                      Row(
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: const [
+                        children: [
                           Text(
                             'Total',
                             style: TextStyle(
@@ -251,17 +248,16 @@ class _HomePageState extends State<HomePage> {
                       const SizedBox(height: 30),
                       ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          onPrimary: Colors.white,
-                          primary: Colors.deepOrange,
+                          foregroundColor: Colors.white, backgroundColor: Colors.deepOrange,
                           padding: const EdgeInsets.symmetric(vertical: 8),
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(8),
                           ),
                         ),
                         onPressed: () {},
-                        child: Row(
+                        child: const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
-                          children: const [
+                          children: [
                             Icon(Icons.print, size: 16),
                             SizedBox(width: 6),
                             Text('Print Bills')
@@ -482,8 +478,8 @@ class _HomePageState extends State<HomePage> {
           borderRadius: BorderRadius.circular(18),
           color: const Color(0xff1f2029),
         ),
-        child: Row(
-          children: const [
+        child: const Row(
+          children: [
             Icon(
               Icons.search,
               color: Colors.white54,

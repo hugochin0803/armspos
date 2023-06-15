@@ -1,7 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:usb_thermal_printer_web/usb_thermal_printer_web.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -17,130 +15,196 @@ class _HomePageState extends State<HomePage> {
    return Scaffold(
   body: Column(
     children: [
-      Expanded(
-        flex: 90,
+      Flexible(
+        flex: 9,
         child: Container(
-          margin: EdgeInsets.only(left: 10),
+          margin: const EdgeInsets.all(10),
           child: Row(
-          children: [
-            Container(
-                width: MediaQuery.of(context).size.width/3,
-                child: Column(
+            children: [
+            Flexible(
+              flex:4,
+              child:
+                Column(
                   children: [
-                    Expanded(
-                      flex:30,
-                      child: _receiptSummary()),
-                    Expanded(
-                      flex:70,
-                    child:Container(
-                      width: double.maxFinite,
-                      decoration: BoxDecoration(
-                        border:Border.all(color:Colors.black)
-                      ),
-                      child:_receiptOutcome()
+                    Flexible(
+                      flex:2,
+                      child: 
+                        Container(
+                          margin: EdgeInsets.fromLTRB(0, 0, 10, 10),
+                          padding: EdgeInsets.fromLTRB(10, 10, 10, 0),
+                          decoration: BoxDecoration(color: Colors.blue),
+                          child: 
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  child:
+                                    Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Text("Total",style: TextStyle(color:Colors.white,fontSize: MediaQuery.of(context).textScaleFactor*25),),
+                                        Text("RM",style: TextStyle(color: Colors.white,fontSize: MediaQuery.of(context).textScaleFactor*25),)
+                                      ],
+                                    )
+                                ),
+                                Container(
+                                  alignment: Alignment.bottomRight,
+                                  child: 
+                                    Text("34.50",style:  TextStyle(color: Colors.white,fontWeight: FontWeight.bold,fontSize: MediaQuery.of(context).textScaleFactor*50),),
+                                )
+                              ]
+                            ),
+                        )
                     ),
-                    ),
+                    Flexible(
+                      flex:2,
+                      child: Row(children: [
+                        Flexible(
+                          child: 
+                            Container(
+                              margin: EdgeInsets.fromLTRB(0, 0, 5, 10),
+                              padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                              decoration: BoxDecoration(color: Colors.blue),
+                              child: Column(
+                                mainAxisAlignment:MainAxisAlignment.center,
+                                children: [
+                                Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [ 
+                                    Text("Total Quantity",style: TextStyle(color:Colors.white, fontSize: MediaQuery.of(context).textScaleFactor*20)),
+                                    Text("4",style: TextStyle(color:Colors.white, fontSize: MediaQuery.of(context).textScaleFactor*20))],
+                                  ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text("Rounding",style: TextStyle(color:Colors.white, fontSize: MediaQuery.of(context).textScaleFactor*20)),
+                                    Text("+0.04",style: TextStyle(color:Colors.white, fontSize: MediaQuery.of(context).textScaleFactor*20))
+                                  ],
+                                ),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text("Sub Total",style: TextStyle(color:Colors.white, fontSize: MediaQuery.of(context).textScaleFactor*20)),
+                                    Text("0.00",style: TextStyle(color:Colors.white, fontSize: MediaQuery.of(context).textScaleFactor*20))
+                                  ],
+                                ),
+                              ]),
+                            ),
+                        ),
+                        Flexible(
+                          child:
+                            Container(
+                              margin: EdgeInsets.fromLTRB(5, 0, 10, 10),
+                              padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
+                              decoration: BoxDecoration(color: Colors.blue),
+                              child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [ 
+                                      Text("Total Quantity",style: TextStyle(color:Colors.white, fontSize: MediaQuery.of(context).textScaleFactor*20)),
+                                      Text("4",style: TextStyle(color:Colors.white, fontSize: MediaQuery.of(context).textScaleFactor*20))],
+                                    ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text("Rounding",style: TextStyle(color:Colors.white, fontSize: MediaQuery.of(context).textScaleFactor*20)),
+                                      Text("+0.04",style: TextStyle(color:Colors.white, fontSize: MediaQuery.of(context).textScaleFactor*20))
+                                    ],
+                                  ),
+                                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                    children: [
+                                      Text("Sub Total",style: TextStyle(color:Colors.white, fontSize: MediaQuery.of(context).textScaleFactor*20)),
+                                      Text("0.00",style: TextStyle(color:Colors.white, fontSize: MediaQuery.of(context).textScaleFactor*20))
+                                    ],
+                                  ),
+                                ]
+                              ),
+                            )
+                        ),
+                      ],)),
                     Expanded(
-                      flex: 7,
+                      flex:8,
                       child: Container(
-                      margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-                      decoration: BoxDecoration(border: Border.all(width: 1)),
-                      child:const TextField(
-
-                      ),
+                        margin: EdgeInsets.only(right: 10),
+                        width: double.maxFinite,
+                        decoration: BoxDecoration(border: Border.all(width:1)),
+                        child: 
+                          _receiptOutcome(),
+                      )
                     ),
-                    ),
+                    Flexible(
+                      flex:1,
+                      child: Container(
+                        margin: EdgeInsets.only(top: 10,right: 10),
+                        decoration: BoxDecoration(border: Border.all(width:1)),
+                        child: const TextField(),
+                      ))
                   ],
-                ),
+                )
             ),
             Expanded(
-              child:Container(
-              margin: EdgeInsets.only(left:10),  
-              child: 
-              Column(
+              flex: 7,
+              child: Container(
+                child: 
+                Column(
                   children: [
-                     _topMenu(
-                      title: 'ARMS POS',
-                      subTitle: '20 October 2022',
-                      action: _search(),
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          flex:6,
-                          child: Column(children:[
-                            Container(
-                              height: 600,
-                              decoration: BoxDecoration(border: Border.all(width: 1)),
-                          ),
-                          // Container(
-                          //     height: 384,
-                          //     decoration: BoxDecoration(border: Border.all(width: 1)),
-                          //     child: Row(children: [
-                          //       Column(
-                          //         children: [
-                          //           Row(children: [
-                          //             _keypad("1"),
-                          //             _keypad("2"),
-                          //             _keypad("3"),
-                          //           ],),
-                          //           Row(children: [
-                          //             _keypad("1"),
-                          //             _keypad("2"),
-                          //             _keypad("3"),
-                          //           ],),
-                          //           Row(children: [
-                          //             _keypad("1"),
-                          //             _keypad("2"),
-                          //             _keypad("3"),
-                          //           ],),
-                          //           Row(children: [
-                          //             _keypad("1"),
-                          //             _keypad("2"),
-                          //             _keypad("3"),
-                          //           ],),
-                          //         ],
-                          //       ),
-                          //     ]),
-                          // ),
-                          ]),),
-                        Expanded(
-                          child: Container(
-                            height: 600,
-                            decoration: BoxDecoration(color: Colors.blue,border: Border.all(width: 1)),
-                            child:
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                 Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: RotatedBox(quarterTurns: 4, child: Text('Overview')),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: RotatedBox(quarterTurns: 3, child: Text('Profile')),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: RotatedBox(quarterTurns: 3, child: Text('Bio')),
-                                ),
-                              ],
-                            )
-                          ),
+                    Flexible(
+                      flex: 2,
+                      child: 
+                        Container(
+                          decoration: BoxDecoration(color:Colors.blue),
                         )
-                      ],
+                    ),
+                    Expanded(
+                      flex: 14,
+                      child: Container(
+                        child: Row(
+                          children: [
+                            Expanded(
+                              flex:7,
+                              child: 
+                                Container(
+                                  decoration:BoxDecoration(border: Border.all(width: 1)),
+                                  //button here
+                                )
+                            ),
+                            Flexible(
+                              flex:1,
+                              child:
+                                Container(
+                                  decoration: BoxDecoration(border: Border.all(width: 1),color: Colors.blue),
+                                )
+                            )
+                          ]
+                        ),
+                      ),
                     )
-                  ],
-
-              ),),)
-          ],
-        ),
+                  ]
+                ),
+              ),
+            )
+          ],)
       ),
       ),
       Expanded(
-        flex: 2,
-        child: Row(children: [
-        ],)
+        flex: 1,
+        child: Container(
+          child:
+            Row(
+              children: [
+              Expanded(
+                child: 
+                  Container(
+                    margin:const EdgeInsets.all(0),
+                    decoration: const BoxDecoration(color: Colors.blue),
+                  ),
+              )
+              ],
+            )
+        )
       )
     ],
   ),
@@ -149,11 +213,11 @@ class _HomePageState extends State<HomePage> {
 
   Widget _keypad(text){
     return Container(
-      margin: EdgeInsets.all(5),
+      margin: const EdgeInsets.all(5),
       width: 100,
       height: 85,
-      decoration: BoxDecoration(color: Colors.grey,),
-      child: Text(text,textAlign: TextAlign.center,style: TextStyle(color: Colors.black),),
+      decoration: const BoxDecoration(color: Colors.grey,),
+      child: Text(text,textAlign: TextAlign.center,style: const TextStyle(color: Colors.black),),
     );
   }
 
@@ -210,7 +274,7 @@ class _HomePageState extends State<HomePage> {
         RichText(
           text: TextSpan(
             text: snapshot.data,
-            style: TextStyle(fontFamily: "Consolas",color: Colors.black,fontSize: 18),
+            style: TextStyle(fontFamily: "Consolas",color: Colors.black,fontSize: MediaQuery.of(context).textScaleFactor*19),
           ),
         ));
       } else if (snapshot.hasError) {
@@ -233,97 +297,109 @@ class _HomePageState extends State<HomePage> {
   }
 
   Widget _receiptSummary(){
-    return Column(children: [
-      Container(
-        margin: EdgeInsets.fromLTRB(0, 10, 0, 0),
-        padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-        decoration: BoxDecoration(color: Colors.blue), 
-        child:
-      Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-        Container(
-          alignment: Alignment.centerLeft,
-          child:Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+    return 
+    Column(children: [
+      Flexible(
+        child: Container(
+          margin: const EdgeInsets.fromLTRB(0, 10, 0, 0),
+          padding: const EdgeInsets.fromLTRB(10, 0, 10, 0),
+          decoration: const BoxDecoration(color: Colors.blue), 
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text("Total",style: TextStyle(color:Colors.white,fontSize: 18),),
-              Text("RM",style: TextStyle(color: Colors.white, fontSize: 20),)
-          ],)
+              Container(
+                alignment: Alignment.centerLeft,
+                child:
+                  const Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text("Total",style: TextStyle(color:Colors.white,),),
+                      Text("RM",style: TextStyle(color: Colors.white),)
+                    ],
+                  )
+              ),
+              Container(
+                alignment: Alignment.centerRight,
+                child: 
+                  const Text("34.50",style:  TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
+              )
+            ],
+          ),
         ),
-        Container(
-          alignment: Alignment.centerRight,
-          child: Text("34.50",style:  TextStyle(color: Colors.white, fontSize: 50,fontWeight: FontWeight.bold),),
-        )
-      ],),
       ),
-      Container(
-        margin: EdgeInsets.fromLTRB(0, 10, 0, 10),
-        child:Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Expanded(
-            child:
-            Container(
-            margin: EdgeInsets.fromLTRB(0, 0, 5, 0),
-            padding: EdgeInsets.all(10), 
-            color: Colors.blue, 
-            child:
-            Column(
+      Flexible(
+        child: 
+          Container(
+            margin: const EdgeInsets.fromLTRB(0, 10, 0, 10),
+            child:Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
-      
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                  Text("Total Quantity",style: TextStyle(color:Colors.white,fontSize: 18)),
-                  Text("4",style: TextStyle(color:Colors.white,fontSize: 18))
-                ],),
-                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                  Text("Rounding",style: TextStyle(color:Colors.white,fontSize: 18)),
-                  Text("+0.04",style: TextStyle(color:Colors.white,fontSize: 18))
-                ],),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                  Text("Sub Total",style: TextStyle(color:Colors.white,fontSize: 18)),
-                  Text("0.00",style: TextStyle(color:Colors.white,fontSize: 18))
-                ],)
-              ],
+                Flexible(
+                  child:
+                  Container(
+                  margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                  padding: const EdgeInsets.all(10), 
+                  color: Colors.blue, 
+                  child:
+                  const Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                        Text("Total Quantity",style: TextStyle(color:Colors.white, fontSize: 10)),
+                        Text("4",style: TextStyle(color:Colors.white, fontSize: 10))
+                      ],),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                        Text("Rounding",style: TextStyle(color:Colors.white, fontSize: 10)),
+                        Text("+0.04",style: TextStyle(color:Colors.white, fontSize: 10))
+                      ],),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                        Text("Sub Total",style: TextStyle(color:Colors.white, fontSize: 10)),
+                        Text("0.00",style: TextStyle(color:Colors.white, fontSize: 10))
+                      ],)
+                    ],
+                  ),
+                  ),
+                ),
+                Flexible(
+                  child:
+                  Container(
+                  margin: const EdgeInsets.fromLTRB(0, 0, 10, 0),
+                  padding: const EdgeInsets.all(10), 
+                  color: Colors.blue, 
+                  child:
+                  const Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                        Text("Total Quantity",style: TextStyle(color:Colors.white, fontSize: 10)),
+                        Text("4",style: TextStyle(color:Colors.white, fontSize: 10))
+                      ],),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                        Text("Rounding",style: TextStyle(color:Colors.white, fontSize: 10)),
+                        Text("+0.04",style: TextStyle(color:Colors.white, fontSize: 10))
+                      ],),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                        Text("Sub Total",style: TextStyle(color:Colors.white, fontSize: 10)),
+                        Text("0.00",style: TextStyle(color:Colors.white, fontSize: 10))
+                      ],)
+                    ],
+                  ),
+                  ),
+                ),
+              ]
             ),
-            ),
-          ),
-          Expanded(
-            child:
-            Container(
-            margin: EdgeInsets.fromLTRB(5, 0, 0, 0),
-            padding: EdgeInsets.all(10), 
-            color: Colors.blue, 
-            child:
-            Column(children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                Text("Discount",style: TextStyle(color:Colors.white,fontSize: 18)),
-                Text("0.00",style: TextStyle(color:Colors.white,fontSize: 18))
-              ],),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                Text("Tax",style: TextStyle(color:Colors.white,fontSize: 18)),
-                Text("0.00",style: TextStyle(color:Colors.white,fontSize: 18))
-              ],),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                Text("S.Charges",style: TextStyle(color:Colors.white,fontSize: 18)),
-                Text("0.00",style: TextStyle(color:Colors.white,fontSize: 18))
-              ],)
-            ],)),
-          ),
-        ],
-      ),)
+          )
+      )
     ]);
   }
 
