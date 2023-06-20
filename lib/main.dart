@@ -1,3 +1,4 @@
+import 'package:armspos/views/barcodeKeyboard.dart';
 import 'package:flutter/material.dart';
 import 'package:armspos/views/login.dart';
 import 'package:armspos/views/home.dart';
@@ -41,6 +42,7 @@ class ArmsApp extends StatelessWidget {
 
       routes: {
         '/home': (context) => const HomePage(),
+        '/keyboard': (context)=> const barcodeKeyboard(),
       },
       initialRoute: '/',
     );

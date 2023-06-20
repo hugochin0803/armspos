@@ -102,19 +102,17 @@ class _LoginPageState extends State<LoginPage> {
         ),
       ),
       Container(
+        height: 600,
                     // Keyboard is transparent
                     color: Colors.grey,
                     child: VirtualKeyboard(
                     // Default height is 300
-                    height: 350,
+                    height: 400,
                     // Default height is will screen width
                     width: 600,
                     // Default is black
-                    textColor: Colors.white,
-                    // Default 14
+                    textColor: Colors.black,
                     fontSize: 20,
-                    // the layouts supported
-                    // [A-Z, 0-9]
                     type: VirtualKeyboardType.Alphanumeric,
                     // Callback for key press event
                     onKeyPress: _onKeyPress),

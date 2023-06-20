@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
+import 'package:window_manager/window_manager.dart';
+import 'barcodeKeyboard.dart';
+
 
 
 class HomePage extends StatefulWidget {
@@ -11,6 +14,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   @override
+  WindowOptions windowOptions = new WindowOptions();
   Widget build(BuildContext context) {
    return Scaffold(
   body: Column(
@@ -21,25 +25,63 @@ class _HomePageState extends State<HomePage> {
             Flexible(
               flex:3,
               child: Container(
-                decoration: BoxDecoration(border: Border.all(width: 1)),
+                decoration: BoxDecoration(border: Border.all(width: 1),color: Colors.blue[100]),
                 child: Column(children: [
                   _totalAmount(),
                   Expanded(
                     flex: 13,
                     child:Container(
-                      decoration: BoxDecoration(border: Border.all(width: 1)),
+                      decoration: BoxDecoration(border: Border.all(width: 1),color: Colors.white),
                       child: _receiptOutcome()),),
                   _subtotalSummary(),
                   Expanded(
                     flex: 2,
                     child: Container(
                       width: double.infinity,
-                      margin: EdgeInsets.only(bottom: 10),
-                      child: TextButton(onPressed: () => {
-
-                    },
-                    child: Text("Payment"),)),
-                    
+                      margin: EdgeInsets.only(bottom: 10,right: 10,left: 10),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                        Flexible(
+                          child: 
+                          Container(
+                            height: double.infinity,
+                            child: RawMaterialButton(
+                                  onPressed: () {},
+                                  elevation: 2.0,
+                                  fillColor: Color.fromARGB(255, 240, 101, 101),
+                                  child: Text("Abort",style: TextStyle(fontSize: MediaQuery.sizeOf(context).width*0.01)),
+                                  padding: EdgeInsets.all(10),
+                                  shape: CircleBorder(),
+                                                  ),
+                          )),
+                        Flexible(
+                          child: Container(
+                            height: double.infinity,
+                            child: RawMaterialButton(
+                                onPressed: () {},
+                                elevation: 2.0,
+                                fillColor: Color.fromARGB(255, 241, 239, 93),
+                                child: Text("Hold Bill",style: TextStyle(fontSize: MediaQuery.sizeOf(context).width*0.01)),
+                                padding: EdgeInsets.all(10),
+                                shape: CircleBorder(),
+                              ),
+                          )
+                            ),
+                        Flexible(
+                          child: Container(
+                            height: double.infinity,
+                            child: RawMaterialButton(
+                                onPressed: () {},
+                                elevation: 2.0,
+                                fillColor: Color.fromARGB(255, 144, 248, 118),
+                                child: Text("Payment",style: TextStyle(fontSize: MediaQuery.sizeOf(context).width*0.01),),
+                                padding: EdgeInsets.all(10),
+                                shape: CircleBorder(),
+                              ),
+                          ))    
+                      ],)
+                    ),
                   )
                 ]),
               )
@@ -51,7 +93,35 @@ class _HomePageState extends State<HomePage> {
                 child: Column(children: [
                   Flexible(flex:2,child: Container(decoration: BoxDecoration(color: Colors.blue),)),
                   Expanded(flex:18,child: Container()),
-                  Flexible(flex:2,child: Container(decoration: BoxDecoration(color: Colors.blue),))
+                  Flexible(flex:2,
+                    child: Container(
+                      decoration: BoxDecoration(color: Colors.blue),
+                      child: Row(children: [
+                        Flexible(child: Container()),
+                        Flexible(child: Container(
+                          child: IconButton(onPressed:() => {
+                          showModalBottomSheet<void>(
+                            context: context,
+                            builder: (BuildContext context) {
+                              return Container(
+                                height: 500,
+                                color: Color.fromARGB(210, 100, 195, 239),
+                                child: Center(
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: <Widget>[
+                                      barcodeKeyboard(),
+                                    ],
+                                  ),
+                                ),
+                              );
+                            },
+                          )
+                        },icon: Icon(Icons.keyboard),),)),
+                        Expanded(child: Container())
+                      ],),
+                    ))
                 ],),
               ),
             ),
