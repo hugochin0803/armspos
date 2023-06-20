@@ -143,8 +143,7 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                         ),
-                        Container(
-                          height: 450.0,
+                        Expanded(
                           child: LayoutBuilder(builder: (context, constraints) { 
                             if(selectedCategory == "Retail"){
                                 return  RCategories();
@@ -312,6 +311,7 @@ Widget _receiptOutcome(){
       if (snapshot.hasData) {
         return 
         SingleChildScrollView(
+        scrollDirection: Axis.vertical,
         reverse: true,
         child:
         RichText(

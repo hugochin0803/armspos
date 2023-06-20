@@ -19,6 +19,8 @@ class _barcodeKeyboardState extends State<barcodeKeyboard> {
       return Row(children: [
         Flexible(child: 
         Container()),
+        
+        Flexible(child:Container()),
         Flexible(child: Container(
         margin: EdgeInsets.only(left: 50,right: 50),
         child: Column(
@@ -43,7 +45,6 @@ class _barcodeKeyboardState extends State<barcodeKeyboard> {
           ],
         ),
       )  ),
-        Flexible(child:Container())
 
       ],);
   }

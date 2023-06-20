@@ -4,6 +4,7 @@ import 'package:armspos/views/home.dart';
 import 'package:armspos/controllers/login_controller.dart';
 import 'package:armspos/models/user_model.dart';
 import 'package:window_manager/window_manager.dart';
+import 'package:armspos/scollBehavior.dart';
 
 void main() async{
    WidgetsFlutterBinding.ensureInitialized();
@@ -30,6 +31,7 @@ class ArmsApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      scrollBehavior: MyCustomScrollBehavior(),
       debugShowCheckedModeBanner: false,
       title: 'ARMS POS',
       theme: ThemeData(
