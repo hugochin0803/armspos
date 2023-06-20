@@ -4,19 +4,22 @@ import 'package:virtual_keyboard_multi_language/virtual_keyboard_multi_language.
 
 class barcodeKeyboard extends StatefulWidget {
   const barcodeKeyboard({Key? key}) : super(key: key);
-
+  
   @override
   State<barcodeKeyboard> createState() => _barcodeKeyboardState();
 }
 
 class _barcodeKeyboardState extends State<barcodeKeyboard> {
+  
   TextEditingController cotext = TextEditingController();
   String text="";
   bool shiftEnabled = false;
   @override
   Widget build(BuildContext context) {
-   
-      return Container(
+      return Row(children: [
+        Flexible(child: 
+        Container()),
+        Flexible(child: Container(
         margin: EdgeInsets.only(left: 50,right: 50),
         child: Column(
           children: [
@@ -39,7 +42,10 @@ class _barcodeKeyboardState extends State<barcodeKeyboard> {
             ),
           ],
         ),
-      );    
+      )  ),
+        Flexible(child:Container())
+
+      ],);
   }
 
   _onKeyPress(VirtualKeyboardKey key) {
@@ -53,7 +59,6 @@ class _barcodeKeyboardState extends State<barcodeKeyboard> {
             text = text.substring(0, text.length - 1);
             break;
         case VirtualKeyboardKeyAction.Return:
-            print(cotext.text);
             break;
         case VirtualKeyboardKeyAction.Space:
             text = text + key.text.toString();

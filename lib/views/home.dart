@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:io';
-import 'package:window_manager/window_manager.dart';
 import 'barcodeKeyboard.dart';
+import 'package:armspos/views/categories/retail_categories.dart';
+import 'package:armspos/views/categories/fnb_categories.dart';
 
 
 
@@ -13,10 +14,10 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  String selectedCategory = "";
   @override
-  WindowOptions windowOptions = new WindowOptions();
-  Widget build(BuildContext context) {
-   return Scaffold(
+  Widget build(BuildContext context) {  
+  return Scaffold(
   body: Column(
     children: [
       Expanded(
@@ -91,14 +92,77 @@ class _HomePageState extends State<HomePage> {
               child: Container(
                 decoration: BoxDecoration(border: Border.all(width: 1)),
                 child: Column(children: [
-                  Flexible(flex:2,child: Container(decoration: BoxDecoration(color: Colors.blue),)),
-                  Expanded(flex:18,child: Container()),
+                  Flexible(flex:3,child: Container(decoration: BoxDecoration(color: Colors.blue),)),
+                  Expanded(flex:14,child: Container(
+                    child: Column(
+                      children: [
+                        Container(
+                          height: 100.0,
+                          decoration: BoxDecoration(border: Border(bottom: BorderSide(color: Colors.black))),
+                          child: Row(
+                            children: [
+                              const SizedBox(width: 20),
+                              SizedBox(
+                                width: 120,
+                                height: 70,
+                                child: ElevatedButton(
+                                onPressed: () { 
+                                  setState(() {
+                                    selectedCategory = "F&B";
+                                  });
+                                }, 
+                                child: const Text('F&B'),
+                                style: ElevatedButton.styleFrom(
+                                side: BorderSide(width:3, color:Colors.brown), //border width and color
+                                elevation: 3, //elevation of button
+                                shape: RoundedRectangleBorder( //to set border radius to button
+                                          borderRadius: BorderRadius.circular(10)
+                                      ),
+                                )),
+                              ),
+                              const SizedBox(width: 20),
+                              SizedBox(
+                                width: 120,
+                                height: 70,
+                                child: ElevatedButton(
+                                onPressed: () { 
+                                  setState(() {
+                                    selectedCategory = "Retail";
+                                  });
+                                }, 
+                                child: const Text('Retail'),
+                                style: ElevatedButton.styleFrom(
+                                side: BorderSide(width:3, color:Colors.brown), //border width and color
+                                elevation: 3, //elevation of button
+                                shape: RoundedRectangleBorder( //to set border radius to button
+                                          borderRadius: BorderRadius.circular(10)
+                                      ),
+                                )),
+                              ),
+                              const SizedBox(width: 20),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          height: 450.0,
+                          child: LayoutBuilder(builder: (context, constraints) { 
+                            if(selectedCategory == "Retail"){
+                                return  RCategories();
+                            }else{
+                                return FCategories();
+                            }
+                          })
+                        ) ,
+                      ],
+                    ),
+                  )),
                   Flexible(flex:2,
                     child: Container(
                       decoration: BoxDecoration(color: Colors.blue),
                       child: Row(children: [
                         Flexible(child: Container()),
                         Flexible(child: Container(
+                          alignment: Alignment.centerRight,
                           child: IconButton(onPressed:() => {
                           showModalBottomSheet<void>(
                             context: context,
@@ -118,8 +182,8 @@ class _HomePageState extends State<HomePage> {
                               );
                             },
                           )
-                        },icon: Icon(Icons.keyboard),),)),
-                        Expanded(child: Container())
+                        },icon: Icon(Icons.keyboard,size: 50,),),)),
+                        Flexible(child: Container())
                       ],),
                     ))
                 ],),
