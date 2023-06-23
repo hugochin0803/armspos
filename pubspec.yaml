@@ -40,6 +40,7 @@ dependencies:
   sqflite_common_ffi: ^2.2.5
   provider: ^6.0.5
   shared_preferences: ^2.1.2
+  flutter_pos_printer_platform: ^1.3.2
 
 dev_dependencies:
   flutter_test:
@@ -76,6 +77,8 @@ flutter:
     - assets/icons/icon-noodles.png
     - assets/icons/icon-burger.png
     - assets/data/receipt.txt
+    - assets/arms-logo-remove.png
+    - assets/arms-logo.png
   # The following line ensures that the Material Icons font is
   # included with your application, so that you can use the icons in
   # the material Icons class.

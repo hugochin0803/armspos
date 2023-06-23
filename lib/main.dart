@@ -19,6 +19,7 @@ void main() async{
   );
   windowManager.waitUntilReadyToShow(windowOptions, () async {
     await windowManager.setFullScreen(true);
+    await windowManager.getPosition();
     await windowManager.show();
     await windowManager.focus();
   });
@@ -40,7 +41,6 @@ class ArmsApp extends StatelessWidget {
       home: LoginPage(
         controller: LoginController(LoginModel()),
       ),
-
       routes: {
         '/home': (context) => const HomePage(),
       },

@@ -29,14 +29,26 @@ class _HomePageState extends State<HomePage> {
                 decoration: BoxDecoration(border: Border.all(width: 1),color: Colors.blue[100]),
                 child: Column(children: [
                   _totalAmount(),
+                  Flexible(
+                    flex: 2,
+                    child: 
+                      Container(
+                         margin: EdgeInsets.only(left: 10,right: 10,bottom: 10),
+                         alignment: Alignment.center,
+                         width: double.infinity,
+                         height: double.infinity,
+                         decoration: BoxDecoration(color: Colors.blue),
+                         child: Text("Pumpkin Custard | Price: 2.90",style: TextStyle(color: Colors.white,fontSize: MediaQuery.sizeOf(context).height*0.018,fontWeight: FontWeight.bold),),
+                      ),
+                  ),
                   Expanded(
-                    flex: 13,
+                    flex: 19,
                     child:Container(
                       decoration: BoxDecoration(border: Border.all(width: 1),color: Colors.white),
                       child: _receiptOutcome()),),
                   _subtotalSummary(),
                   Expanded(
-                    flex: 2,
+                    flex: 3,
                     child: Container(
                       width: double.infinity,
                       margin: EdgeInsets.only(bottom: 10,right: 10,left: 10),
@@ -92,8 +104,61 @@ class _HomePageState extends State<HomePage> {
               child: Container(
                 decoration: BoxDecoration(border: Border.all(width: 1)),
                 child: Column(children: [
-                  Flexible(flex:3,child: Container(decoration: BoxDecoration(color: Colors.blue),)),
-                  Expanded(flex:14,child: Container(
+                  Flexible(
+                    flex:2,
+                    child: Container(
+                      width: double.infinity,
+                      height: double.infinity,
+                      decoration: BoxDecoration(color: Colors.blue),
+                      child: Row(children: [
+                        Expanded(
+                          flex:3,
+                          child: Container(
+                            margin: EdgeInsets.only(left: 10),
+                            child: Image.asset("assets/arms-logo-remove.png"),),),
+                        Expanded(
+                          flex:5,
+                          child: Container(),),
+                        Expanded(
+                          flex:5,
+                          child: Container(
+                            child: Row(children: [
+                              IconButton(
+                              iconSize: 35,
+                              icon: const Icon(
+                                Icons.person,
+                              ),
+                              onPressed: () {
+                              },
+                              ),
+                              Expanded(child: Container(
+                                width: double.infinity,
+                                height: double.infinity,
+                                margin: EdgeInsets.only(top: 10,bottom: 10,right: 50),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                  Text("Name: Hugo Chin",style: TextStyle(fontSize: 20),),
+                                  Text("ID: 10000003",style: TextStyle(fontSize: 15))
+                                ]),
+                              ))
+                            ]),
+                          ),),
+                        Flexible(child: Container(
+                          child:IconButton(
+                              iconSize: 35,
+                              icon: const Icon(
+                                Icons.settings,
+                              ),
+                              onPressed: () {
+                              },
+                            ),
+                        ),),
+                      ]),
+                    )
+                  ),
+                  Expanded(flex:18,child: Container(
                     child: Column(
                       children: [
                         Container(
@@ -160,8 +225,10 @@ class _HomePageState extends State<HomePage> {
                       decoration: BoxDecoration(color: Colors.blue),
                       child: Row(children: [
                         Flexible(child: Container()),
+                        Flexible(child: Container()),
                         Flexible(child: Container(
-                          alignment: Alignment.centerRight,
+                          width: double.infinity,
+                          height: double.infinity,
                           child: IconButton(onPressed:() => {
                           showModalBottomSheet<void>(
                             context: context,
@@ -181,8 +248,7 @@ class _HomePageState extends State<HomePage> {
                               );
                             },
                           )
-                        },icon: Icon(Icons.keyboard,size: 50,),),)),
-                        Flexible(child: Container())
+                        },icon: Icon(Icons.keyboard,size: 50,),),))
                       ],),
                     ))
                 ],),
@@ -198,7 +264,7 @@ class _HomePageState extends State<HomePage> {
 
 Widget _subtotalSummary(){
   return Flexible(
-      flex:2,
+      flex:3,
       child: Row(children: [
           Flexible(
             child: 
@@ -273,7 +339,7 @@ Widget _subtotalSummary(){
 
 Widget _totalAmount(){
   return Flexible(
-            flex:2,
+            flex:3,
             child: 
               Container(
                 margin: EdgeInsets.all(10),

@@ -86,12 +86,12 @@ class RCategories extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       child: GridView.count(
-        scrollDirection: Axis.horizontal,
+        scrollDirection: Axis.vertical,
         primary: false,
         padding: const EdgeInsets.all(20),
         crossAxisSpacing: 20,
         mainAxisSpacing: 30,
-        crossAxisCount: 5,
+        crossAxisCount: 6,
         children: [
           SizedBox(
                 child: ElevatedButton(
